@@ -63726,6 +63726,7 @@ GameObject:
   - component: {fileID: 1085081178}
   - component: {fileID: 1085081177}
   - component: {fileID: 1085081181}
+  - component: {fileID: 1085081182}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -63862,6 +63863,27 @@ MonoBehaviour:
   isjumping: 0
   speed: 5
   jump: 10
+--- !u!95 &1085081182
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085081176}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6712c18891defaf48aba5d08e4d9964f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1088399316
 GameObject:
   m_ObjectHideFlags: 0
