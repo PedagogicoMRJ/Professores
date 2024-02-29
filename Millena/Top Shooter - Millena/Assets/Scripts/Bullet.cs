@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour
         if(quadrant == 7 || quadrant == 0 || quadrant == 1){
             muzzlePosition.x = 0.45f;
         }
-        else if(quadrant <= 3 && quadrant <= 5){
+        else if(quadrant >= 3 && quadrant <= 5){
             muzzlePosition.x=-0.45f;
         }
         else{
@@ -44,13 +44,14 @@ public class Bullet : MonoBehaviour
             muzzlePosition.y = 1.25f;
         }
         else if(quadrant >= 5 && quadrant <=7){
-            muzzlePosition.y = 0.65f;
+            muzzlePosition.y = 0.15f;
         }
         else{
             muzzlePosition.y = 0.65f;
         }
         transform.Rotate(0f,0f,muzzeAngle);
         transform.localPosition = muzzlePosition;
+        Debug.Log(muzzlePosition);
         bulletAnim.SetTrigger("Fire");
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.transform.Rotate(0f,0f,bulletAngle);
