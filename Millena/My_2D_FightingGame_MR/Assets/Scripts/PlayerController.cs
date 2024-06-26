@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class playercontroller : MonoBehaviour
 {
+    WaitForSeconds threeSec;
+    public bool isPlayable;
     int maxHealth = 100;
     int currentHealth;
     public HealthBar healthBar;
@@ -18,14 +22,20 @@ public class playercontroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        threeSec = new WaitForSeconds(3);
+        isPlayable = false;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         anim = GetComponentInChildren<Animator>();
         rig = GetComponent<Rigidbody2D>();
     }
     void FixedUpdate(){
+        if(currentHealth <=0){
+            anim.SetBool("Defeat", true);
+            StartCoroutine("Ending");
+        }
         if(isKnockback){
-            anim.SetBool("knockback", false);
+            anim.SetBool("Knockback", false);
             if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime>1){
                 isKnockback=false;
             }
@@ -36,12 +46,18 @@ public class playercontroller : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
     void Update()
     {
-        if(!isAttack && !isKnockback){
-            Movement();
-            Attack();
+        if(currentHealth>0){
+            if(!isPlayable){
+                isPlayable = healthBar.finishCountDown;
+            }
+            else{
+                if(!isAttack && !isKnockback){
+                    Movement();
+                    Attack();
+                }
+            }
         }
     }
     void Movement(){
@@ -102,12 +118,25 @@ public class playercontroller : MonoBehaviour
         rig.velocity=new Vector2(0.0f, 0.0f);
         anim.SetFloat("Walk", move);
         if(collision.gameObject.layer==3){
+            print("atingido");
             currentHealth-=10;
-            healthBar.SetHealth(currentHealth);
-            anim.SetBool("knockback", true);
-            if(isPlayer1){
-                rig.velocity=new Vector2(speed*(-1), 0.0f);
+            if(currentHealth>0){
+                healthBar.SetHealth(currentHealth);
+                anim.SetBool("Knockback", true);
+                if(isPlayer1){
+                    rig.velocity=new Vector2(speed*(-1), 0.0f);
+                }
+                else                                                                  //NÃO EXISTE NA APOSTILA
+                {
+                    rig.velocity = new Vector2(speed, 0.0f);
+                }
+                isKnockback = true;
             }
         }
+    }
+    IEnumerator Ending(){
+        yield return threeSec;
+        anim.SetBool("Defeat", false);
+        SceneManager.LoadScene(0);
     }
 }
