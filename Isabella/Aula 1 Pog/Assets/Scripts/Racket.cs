@@ -16,7 +16,27 @@ public class Racket : MonoBehaviour
     //variável que armazena o valor referente aos movimentos das plataformas
     private float movement;
 
+    //Vetor que armazena a posição inicial x,y,z das plataformas dos jogadores
+    public Vector3 startPosition;
+
     // OBS: variáveis publicadas  podem ter seus valores alterados
+
+    //A função Start é chamada antes do primeiro frame do jogo
+
+    void Start()
+    {
+        startPosition = transform.position;
+    }
+
+    //A função Reset reposiciona as plataformas em sua posição inicial 
+    public void Reset()
+    {
+      //Atribui á velocidade do componente Rigidbody o vetor x=0, y=0
+      rb.velocity = Vector3.zero;
+        //Atribui os valores armazenados na váriavel starPosition a posição atual das plataformas
+        transform.position = startPosition;
+    }
+
 
     // A função Update é chamada a cada atualização de um frame - VER O QUE É "FRAME"
 

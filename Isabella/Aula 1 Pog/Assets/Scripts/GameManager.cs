@@ -42,7 +42,32 @@ public class GameManager : MonoBehaviour
 
     //A função PlyerLeftScore registra que o jogador a esquerda pontuou
     public void PlayerLeftScored()
-    {
+    {   
+        //aumenta o valor contido na variável PlayerLeftScore
         PlayerLeftScore++;
+        //Atribui ao texto do objeto TMP PlayerLeftScore o valor da variável PlayerLeftScore
+        PlayerLeftText.GetComponent<TextMeshProUGUI>().text = PlayerLeftScore.ToString();
+        //Chama a função ResetPosition
+        ResetPosition();
+
+    }
+    public void PlayerRightScored()
+    {
+        //aumenta o valor contido na variável PlayerRightScore
+        PlayerRightScore++;
+        //Atribui ao texto do objeto TMP PlayerRightScore o valor da variável PlayerRightScore
+        PlayerRightText.GetComponent<TextMeshProUGUI>().text = PlayerRightScore.ToString();
+        ResetPosition();
+
+    }
+
+    public void ResetPosition()
+    {
+        //chama a função Reset do script Ball do component Ball
+        Ball.GetComponent<Ball>().Reset();
+        //Chama a função Reset do script Racket do componente LeftPlayer
+        LeftPlayer.GetComponent<Racket>().Reset();
+        //Chama a função Reset do script Racket do componente RightPlayer
+        RightPlayer.GetComponent<Racket>().Reset();
     }
 }
