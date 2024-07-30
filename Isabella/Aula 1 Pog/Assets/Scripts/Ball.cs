@@ -13,6 +13,9 @@ public class Ball : MonoBehaviour
     //Vetor que armazena a posição inicial x,y,z das plataformas dos jogadores
     public Vector3 startPosition;
 
+    //Variável que armazena o objeto de audio de bola
+    public AudioSource audioball;
+
     //A função Start é chamada antes do primeiro frame do jogo
     void Start()
     {
@@ -39,6 +42,14 @@ public class Ball : MonoBehaviour
         //Atribui os valores armazenados na váriavel starPosition a posição atual das plataformas
         transform.position = startPosition;
         Launch();
+
+    }
+
+    //A função do colisor é chamada para detectar a colisão da bolinha
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Aciona o audio da bolinha
+        audioball.Play();
 
     }
 }
