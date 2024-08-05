@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class playercontroller : MonoBehaviour
 {
-    WaitForSeconds threeSec;
     public bool isPlayable;
     int maxHealth = 100;
     int currentHealth;
@@ -22,17 +21,18 @@ public class playercontroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        threeSec = new WaitForSeconds(3);
         isPlayable = false;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         anim = GetComponentInChildren<Animator>();
         rig = GetComponent<Rigidbody2D>();
     }
-    void FixedUpdate(){
+    void FixedUpdate()
+    {
         if(currentHealth <=0){
             anim.SetBool("Defeat", true);
             StartCoroutine("Ending");
+            SceneManager.LoadScene(0);
         }
         if(isKnockback){
             anim.SetBool("Knockback", false);
@@ -48,17 +48,19 @@ public class playercontroller : MonoBehaviour
     }
     void Update()
     {
+        if (!isPlayable){
+            isPlayable = healthBar.finishCountDown;
+        }
+        else
+        {
         if(currentHealth>0){
-            if(!isPlayable){
-                isPlayable = healthBar.finishCountDown;
-            }
-            else{
-                if(!isAttack && !isKnockback){
-                    Movement();
-                    Attack();
-                }
+            
+            if(!isAttack && !isKnockback){
+                Movement();
+                Attack();
             }
         }
+    }
     }
     void Movement(){
         if(isPlayer1){
@@ -133,10 +135,5 @@ public class playercontroller : MonoBehaviour
                 isKnockback = true;
             }
         }
-    }
-    IEnumerator Ending(){
-        yield return threeSec;
-        anim.SetBool("Defeat", false);
-        SceneManager.LoadScene(0);
     }
 }
