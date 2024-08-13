@@ -9,7 +9,7 @@ public class Bird : MonoBehaviour
     //Variável que acessa o componente Rigidbody 2D do objeto FlappyBird
     private Rigidbody2D rig;
     //Classe associada ao objeto Canvas da Unity
-    public GameObject gameover;
+    public GameObject Gameover;
     void Start()
     {
         //Atribui o componente Rigidbody 2D a variável rig
@@ -30,9 +30,9 @@ public class Bird : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2d(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameover.SetActive(true);
+        Gameover.SetActive(true);
         Time.timeScale = 0;
     }
 }

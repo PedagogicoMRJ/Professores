@@ -12,6 +12,7 @@ public class MovePipes : MonoBehaviour
     void Update()
     {
         //Modifica a posição do objeto mandando-o para esquerda de acordo com a velocidade da variável speed
+        // se tirar o "+" diminui os pipes
         transform.position += Vector3.left * speed * Time.deltaTime;
         
     }

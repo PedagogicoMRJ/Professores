@@ -708,7 +708,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -761,7 +761,7 @@ RectTransform:
   m_GameObject: {fileID: 802699621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 0}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 766656624}
@@ -769,7 +769,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 200}
-  m_SizeDelta: {x: 96, y: 21}
+  m_SizeDelta: {x: 95, y: 21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &802699623
 MonoBehaviour:
@@ -993,7 +993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  gameover: {fileID: 766656620}
+  Gameover: {fileID: 766656620}
 --- !u!1 &1395003225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,8 +1024,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipe: {fileID: 1207511787468838891, guid: 60e8fe401ee46834bb3185a436dbfdd5, type: 3}
-  height: 0
-  maxtime: 0
+  height: 2
+  maxtime: 1
 --- !u!4 &1395003227
 Transform:
   m_ObjectHideFlags: 0
